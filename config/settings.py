@@ -32,10 +32,10 @@ AUTH_USER_MODEL = 'myowngame.CustomUser'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ')
 
 # Application definition
 
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'rest_framework', # djangorestframework
+    'rest_framework',  # djangorestframework
     'drf_yasg',
 
     'myowngame',
