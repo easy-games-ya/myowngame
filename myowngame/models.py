@@ -65,6 +65,9 @@ class QuestionModel(models.Model):
     question = models.CharField(max_length=512, verbose_name='Вопрос')
     score = models.IntegerField(verbose_name='Баллы')
 
+    image = models.ImageField(upload_to='question_images', null=True, blank=True)
+
+
     category = models.ForeignKey(CategoryModel, on_delete=models.CASCADE, related_name='question')
 
     def __str__(self):
