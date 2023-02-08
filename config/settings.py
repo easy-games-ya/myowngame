@@ -27,7 +27,7 @@ dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 SECRET_KEY = os.environ['SECRET_KEY'] or "$3kr3tKey"
-print(SECRET_KEY)
+
 
 # Users
 AUTH_USER_MODEL = 'myowngame.CustomUser'
@@ -35,7 +35,7 @@ AUTH_USER_MODEL = 'myowngame.CustomUser'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG') or True
-
+print("DEBUG=", DEBUG)
 
 ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') or []
 
@@ -167,7 +167,9 @@ STATICFILES_DIRS = [
 ]
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+print("STATIC_URL=", STATIC_URL)
+print("STATICFILES_DIRS=", STATICFILES_DIRS)
+print("STATIC_ROOT=", STATIC_ROOT)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
