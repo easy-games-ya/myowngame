@@ -32,7 +32,7 @@ AUTH_USER_MODEL = 'myowngame.CustomUser'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG'] or True
+DEBUG = os.environ.get('DEBUG') or True
 
 
 ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') or []
@@ -163,7 +163,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
