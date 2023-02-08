@@ -34,7 +34,7 @@ AUTH_USER_MODEL = 'myowngame.CustomUser'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DEBUG')) or True
+DEBUG = os.environ.get('DEBUG') or False
 print("DEBUG=", DEBUG)
 print("type(DEBUG)=", type(DEBUG))
 
