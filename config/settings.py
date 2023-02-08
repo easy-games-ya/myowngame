@@ -36,6 +36,7 @@ AUTH_USER_MODEL = 'myowngame.CustomUser'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DEBUG')) or True
 print("DEBUG=", DEBUG)
+print("type(DEBUG)=", type(DEBUG))
 
 ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') or []
 
@@ -163,6 +164,7 @@ USE_TZ = True
 
 if not DEBUG:
     STATIC_ROOT = os.environ.get('STATIC_ROOT')
+    print("STATIC_ROOT=", STATIC_ROOT)
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -170,7 +172,7 @@ STATICFILES_DIRS = [
 
 print("STATIC_URL=", STATIC_URL)
 print("STATICFILES_DIRS=", STATICFILES_DIRS)
-print("STATIC_ROOT=", STATIC_ROOT)
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
