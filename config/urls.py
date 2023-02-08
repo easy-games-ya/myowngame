@@ -34,7 +34,7 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('mog/', include(mog_urls)),
     path('api-auth/', include('rest_framework.urls')),
-    # *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
+    *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
 ]
 
 # Для статики:
