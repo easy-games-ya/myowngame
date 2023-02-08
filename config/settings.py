@@ -34,7 +34,7 @@ AUTH_USER_MODEL = 'myowngame.CustomUser'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG') or False
+DEBUG = bool(os.environ.get('DEBUG')) or False
 print("DEBUG=", DEBUG)
 print("type(DEBUG)=", type(DEBUG))
 
@@ -162,9 +162,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-if not DEBUG:
-    STATIC_ROOT = os.environ.get('STATIC_ROOT')
-    print("STATIC_ROOT=", STATIC_ROOT)
+# if not DEBUG:
+#     STATIC_ROOT = os.environ.get('STATIC_ROOT')
+#     print("STATIC_ROOT=", STATIC_ROOT)
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
