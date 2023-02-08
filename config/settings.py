@@ -34,7 +34,7 @@ AUTH_USER_MODEL = 'myowngame.CustomUser'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG') or True
+DEBUG = bool(os.environ.get('DEBUG')) or True
 print("DEBUG=", DEBUG)
 
 ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') or []
@@ -162,7 +162,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_ROOT = os.environ.get('STATIC_ROOT')
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
