@@ -1,5 +1,5 @@
-from django.conf.urls import url
-from django.urls import path, include
+from django.urls import path
+
 from .views import (
     CategoryListApiView,
     CategoryDetailApiView,
@@ -8,8 +8,14 @@ from .views import (
 )
 
 urlpatterns = [
-    path('api/category', CategoryListApiView.as_view()),
-    path('api/category/<int:category_id>/', CategoryDetailApiView.as_view()),
-    path('api/category/<int:category_id>/question', QuestionListApiView.as_view()),
-    path('api/category/<int:category_id>/question/<int:question_id>/', QuestionDetailApiView.as_view()),
+    # List categories
+    path('api/category/', CategoryListApiView.as_view()),
+    # Detail category
+    path('api/category/<int:pk>/', CategoryDetailApiView.as_view()),
+    # List all questions
+    path('api/question/list/', QuestionListApiView.as_view()),
+    # List of questions by category
+    path('api/question/category/<int:pk>/', QuestionListApiView.as_view()),
+    # Detail question
+    path('api/question/<int:pk>/', QuestionDetailApiView.as_view()),
 ]
