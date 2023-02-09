@@ -14,15 +14,15 @@ SECRET_KEY = os.environ['SECRET_KEY'] or "$3kr3tKey"
 # Users
 AUTH_USER_MODEL = 'myowngame.CustomUser'
 
-if  os.environ.get('SERVERNAMES'):
-    ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') or []
-else:
-    ALLOWED_HOSTS = []
+# if  os.environ.get('SERVERNAMES'):
+ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') or []
+# else:
+#     ALLOWED_HOSTS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DEBUG')) or False
-print("DEBUG=", DEBUG)
-print("type(DEBUG)=", type(DEBUG))
+# print("DEBUG=", DEBUG)
+# print("type(DEBUG)=", type(DEBUG))
 
 
 # Application definition
@@ -155,8 +155,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-print("STATIC_URL=", STATIC_URL)
-print("STATICFILES_DIRS=", STATICFILES_DIRS)
+# print("STATIC_URL=", STATIC_URL)
+# print("STATICFILES_DIRS=", STATICFILES_DIRS)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
