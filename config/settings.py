@@ -15,9 +15,9 @@ SECRET_KEY = os.environ['SECRET_KEY'] or "$3kr3tKey"
 AUTH_USER_MODEL = 'myowngame.CustomUser'
 
 # if  os.environ.get('SERVERNAMES'):
-ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') or []
+# ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') or []
 # else:
-#     ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DEBUG')) or False
