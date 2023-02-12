@@ -19,3 +19,4 @@ urlpatterns = [
     # Detail question
     path('api/question/<int:pk>/', QuestionDetailApiView.as_view()),
 ]
+
