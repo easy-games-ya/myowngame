@@ -6,7 +6,7 @@ from django.urls import reverse
 
 
 class CustomUser(AbstractUser):
-    '''Модель пользовате'''
+    '''Модель пользователя'''
     GENDER = (
         ('male', 'male'),
         ('female', 'female')

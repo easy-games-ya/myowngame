@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',  # djangorestframework
     'drf_yasg',
+    'rest_framework.authtoken',
 
     'myowngame',
 ]
@@ -150,16 +151,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-# if not DEBUG:
-#     STATIC_ROOT = os.environ.get('STATIC_ROOT')
-#     print("STATIC_ROOT=", STATIC_ROOT)
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-
-# print("STATIC_URL=", STATIC_URL)
-# print("STATICFILES_DIRS=", STATICFILES_DIRS)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -181,4 +176,11 @@ LOGGING = {
             'level': 'DEBUG'
             }
         }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }

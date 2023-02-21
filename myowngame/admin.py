@@ -10,9 +10,9 @@ class CustomUserAdmin(admin.ModelAdmin):
     list_display = ('username', 'count', 'count_game', 'image_show')
 
     def image_show(self, obj):
-        '''Вывод картинки в админке'''
-        if obj.image:
-            return mark_safe("<img src='{}' width='60' />".format(obj.image.url))
+    #     '''Вывод картинки в админке'''
+    #     if obj.image:
+    #         return mark_safe("<img src='{}' width='60' />".format(obj.image.url))
         return None
 
 
