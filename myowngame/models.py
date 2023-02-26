@@ -11,7 +11,8 @@ class CustomUser(AbstractUser):
         ('male', 'male'),
         ('female', 'female')
     )
-    avatar = models.ImageField(upload_to='user_images', null=True, blank=True)
+    # avatar = models.ImageField(upload_to='user_images', null=True, blank=True)
+    avatar = models.ImageField(upload_to='user_images', blank=False)
     gender = models.CharField(max_length=6, choices=GENDER, default='male', verbose_name='Пол')
     count = models.IntegerField(default=0, verbose_name='Общий счет')
     count_game = models.IntegerField(default=0, verbose_name='Счет в игре')
@@ -66,7 +67,6 @@ class QuestionModel(models.Model):
     score = models.IntegerField(verbose_name='Баллы')
 
     image = models.ImageField(upload_to='question_images', null=True, blank=True)
-
 
     category = models.ForeignKey(CategoryModel, on_delete=models.CASCADE, related_name='question')
 

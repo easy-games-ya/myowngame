@@ -1,3 +1,4 @@
+from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 import os
 import dotenv
@@ -8,24 +9,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
-SECRET_KEY = os.environ['SECRET_KEY'] or "$3kr3tKey"
 
+SECRET_KEY = get_random_secret_key()
+# SECRET_KEY = os.environ['SECRET_KEY'] or "$3kr3tKey"
 
-# Users
 AUTH_USER_MODEL = 'myowngame.CustomUser'
 
-# if  os.environ.get('SERVERNAMES'):
-# ALLOWED_HOSTS = os.environ.get('SERVERNAMES').split(' ') or []
-# else:
 ALLOWED_HOSTS = []
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DEBUG')) or False
-# print("DEBUG=", DEBUG)
-# print("type(DEBUG)=", type(DEBUG))
-
-
-# Application definition
+# DEBUG = bool(os.environ.get('DEBUG')) or False
+DEBUG = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -34,12 +27,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'corsheaders',
-    'rest_framework',  # djangorestframework
+    'rest_framework',
     'drf_yasg',
     'rest_framework.authtoken',
-
+    'djoser',
     'myowngame',
 ]
 
@@ -70,7 +62,7 @@ CORS_ALLOW_METHODS = [
     'GET',
     # 'OPTIONS',
     # 'PATCH',
-    # 'POST',
+    'POST',
     # 'PUT',
 ]
 CORS_ALLOW_HEADERS = [
@@ -105,20 +97,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     # {
@@ -135,10 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     # },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.1/topics/i18n/
-
 LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
@@ -147,10 +127,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -158,9 +134,6 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -180,7 +153,13 @@ LOGGING = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ]
+}
+
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
 }
