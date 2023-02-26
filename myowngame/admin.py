@@ -24,12 +24,11 @@ class ContactModelAdmin(admin.ModelAdmin):
 
 @admin.register(CategoryModel)
 class CategoryModelAdmin(admin.ModelAdmin):
-    list_display = ('title',)
-
+    list_display = ('id', 'title','slug', 'description')
 
 @admin.register(QuestionModel)
 class QuestionModelAdmin(admin.ModelAdmin):
-    list_display = ('question', 'score', 'category', 'image_show')
+    list_display = ('id', 'question', 'score', 'category', 'image_show')
 
     def image_show(self, obj):
         '''Вывод картинки в админке'''
