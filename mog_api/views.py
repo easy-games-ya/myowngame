@@ -3,14 +3,15 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework import permissions
 from rest_framework.response import Response
 
+from mog_api.permissions import AuthorOrReadonly
 from myowngame.models import CategoryModel, QuestionModel
 from .serializers import CategorySerializer, QuestionSerializer
 
 
 class CategoryListApiView(ListAPIView):
     '''List categories'''
-    authentication_classes = (TokenAuthentication, )
-    permission_classes = (permissions.IsAuthenticated,)
+    # authentication_classes = (TokenAuthentication, )
+    permission_classes = (AuthorOrReadonly, )
     # queryset = CategoryModel.objects.all().prefetch_related('question')
     queryset = CategoryModel.objects.all()
     serializer_class = CategorySerializer
@@ -25,16 +26,16 @@ class CategoryListApiView(ListAPIView):
 
 class CategoryDetailApiView(RetrieveAPIView):
     '''Detail categories'''
-    authentication_classes = (TokenAuthentication, )
-    permission_classes = (permissions.IsAuthenticated,)
+    # authentication_classes = (TokenAuthentication, )
+    permission_classes = (AuthorOrReadonly, )
     queryset = CategoryModel.objects.all().prefetch_related('question')
     serializer_class = CategorySerializer
 
 
 class QuestionListApiView(ListAPIView):
     '''List question'''
-    authentication_classes = (TokenAuthentication, )
-    permission_classes = (permissions.IsAuthenticated,)
+    # authentication_classes = (TokenAuthentication, )
+    permission_classes = (AuthorOrReadonly, )
     serializer_class = QuestionSerializer
 
     def get_queryset(self):
@@ -46,7 +47,7 @@ class QuestionListApiView(ListAPIView):
 
 class QuestionDetailApiView(RetrieveAPIView):
     '''Detail question'''
-    authentication_classes = (TokenAuthentication, )
-    permission_classes = (permissions.IsAuthenticated,)
+    # authentication_classes = (TokenAuthentication, )
+    permission_classes = (AuthorOrReadonly, )
     queryset = QuestionModel.objects.all().select_related('category')
     serializer_class = QuestionSerializer

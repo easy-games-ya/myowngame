@@ -1,21 +1,21 @@
 from django.db import models
-
 from django.contrib.auth.models import AbstractUser
-
 from django.urls import reverse
 
 
 class CustomUser(AbstractUser):
-    '''Модель пользователя'''
+    """Кастомизированная модель для работы с пользователями"""
     GENDER = (
         ('male', 'male'),
         ('female', 'female')
     )
-    # avatar = models.ImageField(upload_to='user_images', null=True, blank=True)
-    avatar = models.ImageField(upload_to='user_images', blank=False)
+    avatar = models.ImageField(upload_to='user_images', null=True, blank=True)
     gender = models.CharField(max_length=6, choices=GENDER, default='male', verbose_name='Пол')
     count = models.IntegerField(default=0, verbose_name='Общий счет')
     count_game = models.IntegerField(default=0, verbose_name='Счет в игре')
+
+
+    REQUIRED_FIELDS = ('gender', 'count', 'count_game')
 
     def __str__(self):
         return self.username

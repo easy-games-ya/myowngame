@@ -1,16 +1,15 @@
 from django import urls
 from django.urls import include, path, re_path
+from djoser.views import UserViewSet, TokenCreateView, TokenDestroyView
+
 from . import views
 
 
 urlpatterns = [
-    # Login
-    # path('login/', views.LoginView.as_view()),
-    # path('logout/', views.LogoutView.as_view()),
-    # path('profile/', views.ProfileView.as_view()),
-    # path('register/', views.RegisterView.as_view(), name='auth_register'),
-    # re_path(r'^auth/', include('djoser.urls')),
-    # re_path(r'^auth/', include('djoser.urls.authtoken')),
-    path('auth/', include('djoser.urls')),
-    re_path(r'^auth/', include('djoser.urls.authtoken')),
+    path('register/', UserViewSet.as_view({'post': 'create'}), name="register"),
+	path("login/", TokenCreateView.as_view(), name="login"),
+    path("logout/", TokenDestroyView.as_view(), name="login"),
+    path('profile/', UserViewSet.as_view({'get': 'me'}), name="register"),
+    path('update/', UserViewSet.as_view({'post': 'perform_update'}), name="update"),
+    path('delete/', UserViewSet.as_view({'post': 'destroy'}), name="delete"),
 ]
