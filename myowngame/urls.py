@@ -1,7 +1,7 @@
 from django import urls
 from django.urls import include, path, re_path
 from djoser.views import UserViewSet, TokenCreateView, TokenDestroyView
-
+ 
 from . import views
 
 
