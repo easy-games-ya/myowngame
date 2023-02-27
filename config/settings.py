@@ -10,15 +10,15 @@ dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 
-SECRET_KEY = get_random_secret_key()
-# SECRET_KEY = os.environ['SECRET_KEY'] or "$3kr3tKey"
+# SECRET_KEY = get_random_secret_key()
+SECRET_KEY = os.environ['SECRET_KEY'] or "$3kr3tKey"
 
 AUTH_USER_MODEL = 'myowngame.CustomUser'
 
 ALLOWED_HOSTS = []
 
-# DEBUG = bool(os.environ.get('DEBUG')) or False
-DEBUG = True
+DEBUG = bool(os.environ.get('DEBUG')) or False
+# DEBUG = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
