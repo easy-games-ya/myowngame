@@ -13,7 +13,7 @@ urlpatterns = [
     # Detail category
     path('api/category/<int:pk>/', CategoryDetailApiView.as_view()),
     # List all questions
-    path('api/question/list/', QuestionListApiView.as_view()),
+    path('api/question/', QuestionListApiView.as_view()),
     # List of questions by category
     path('api/question/category/<int:pk>/', QuestionListApiView.as_view()),
     # Detail question

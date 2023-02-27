@@ -1,12 +1,10 @@
 from django.db import models
-
 from django.contrib.auth.models import AbstractUser
-
 from django.urls import reverse
 
 
 class CustomUser(AbstractUser):
-    '''Модель пользовате'''
+    """Кастомизированная модель для работы с пользователями"""
     GENDER = (
         ('male', 'male'),
         ('female', 'female')
@@ -15,6 +13,9 @@ class CustomUser(AbstractUser):
     gender = models.CharField(max_length=6, choices=GENDER, default='male', verbose_name='Пол')
     count = models.IntegerField(default=0, verbose_name='Общий счет')
     count_game = models.IntegerField(default=0, verbose_name='Счет в игре')
+
+
+    REQUIRED_FIELDS = ('gender', 'count', 'count_game')
 
     def __str__(self):
         return self.username
@@ -66,7 +67,6 @@ class QuestionModel(models.Model):
     score = models.IntegerField(verbose_name='Баллы')
 
     image = models.ImageField(upload_to='question_images', null=True, blank=True)
-
 
     category = models.ForeignKey(CategoryModel, on_delete=models.CASCADE, related_name='question')
 
