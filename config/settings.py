@@ -15,7 +15,7 @@ SECRET_KEY = get_random_secret_key()
 
 AUTH_USER_MODEL = 'myowngame.CustomUser'
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'myowngame-y039.onrender.com']
 
 # DEBUG = bool(os.environ.get('DEBUG')) or False
 DEBUG = True
