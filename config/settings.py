@@ -17,8 +17,8 @@ AUTH_USER_MODEL = 'myowngame.CustomUser'
 
 ALLOWED_HOSTS = ['127.0.0.1', 'myowngame-y039.onrender.com']
 
-# DEBUG = bool(os.environ.get('DEBUG')) or False
-DEBUG = True
+DEBUG = bool(os.environ.get('DEBUG')) or False
+# DEBUG = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework.authtoken',
     'djoser',
-    'myowngame',
+    'myowngame.apps.MyowngameConfig',
 ]
 
 MIDDLEWARE = [
