@@ -46,36 +46,42 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
 
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
 
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https://\w+\.myowngame.onrender\.com$",
-]
+# CORS_ALLOWED_ORIGINS = [
+    # "http://localhost:3000",
+# ]
 
-CORS_ALLOW_METHODS = [
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
+
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+    # r"^https://\w+\.myowngame.onrender\.com$",
+# ]
+
+# CORS_ALLOW_METHODS = [
     # 'DELETE',
-    'GET',
+    # 'GET',
     # 'OPTIONS',
     # 'PATCH',
-    'POST',
+    # 'POST',
     # 'PUT',
-]
-CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-]
+# ]
+# CORS_ALLOW_HEADERS = [
+    # 'accept',
+#     'accept-encoding',
+#     'authorization',
+#     'content-type',
+#     'dnt',
+#     'origin',
+#     'user-agent',
+#     'x-csrftoken',
+#     'x-requested-with',
+# ]
 
 ROOT_URLCONF = 'config.urls'
 
