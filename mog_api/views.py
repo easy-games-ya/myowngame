@@ -45,7 +45,7 @@ class QuestionListApiView(ListAPIView):
             return QuestionModel.objects.all().select_related('category')
         score = int(score)     
         # return QuestionModel.objects.order_by('?').filter(category_id=category.id, score=score).first()
-        return QuestionModel.objects.order_by('?').filter(category=category, score=score)[:1]
+        return QuestionModel.objects.order_by('?').filter(category=category, score=score)[0]
 
 
     # def get_queryset(self):
